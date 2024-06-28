@@ -8,10 +8,9 @@ frontend:
     build:
       commands:
         - yarn build
-        - mv build .amplify-hosting
-        - mv .amplify-hosting/client .amplify-hosting/static
-        - mkdir -p .amplify-hosting/compute
-        - mv .amplify-hosting/server .amplify-hosting/compute/default
+        - mkdir -p .amplify-hosting/static
+        - mkdir -p .amplify-hosting/compute/default
+        - mv build/* .amplify-hosting/static/
         - yarn install --production
         - cp package.json .amplify-hosting/compute/default
         - cp -r node_modules .amplify-hosting/compute/default
