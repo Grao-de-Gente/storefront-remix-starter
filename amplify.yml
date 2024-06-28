@@ -4,15 +4,15 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn ci
+        - yarn install
     build:
       commands:
-        - yarn run build
+        - yarn build
         - mv build .amplify-hosting
         - mv .amplify-hosting/client .amplify-hosting/static
         - mkdir -p .amplify-hosting/compute
         - mv .amplify-hosting/server .amplify-hosting/compute/default
-        - yarn ci --omit dev
+        - yarn install --production
         - cp package.json .amplify-hosting/compute/default
         - cp -r node_modules .amplify-hosting/compute/default
         - cp server.js .amplify-hosting/compute/default
